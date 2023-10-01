@@ -1,5 +1,5 @@
 # mcgpa
-
+## :trophy: Best Newbie Hack at [MAIS Hacks 2023](https://maishacks2023.devpost.com/)
 ### What our model predicts
 Our model takes as input a list of the user's current courses and professors, alongside their GPA and completed credits and predicts their GPA by the end of the semester. The model takes historical course data and the difficulty of each professor. Furthermore, our model is specific towards McGill students by only training on McGill data, meaning our predictions follow the trends of McGill courses and McGill professors.
 
