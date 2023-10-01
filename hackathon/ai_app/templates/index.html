@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<img src="{{ url_for('static', filename='Images/mais.png')}}" height="400px" width="auto">
+
+<form action="{{ url_for('index')}}" method="post">
+<!-- This just defines the label and the input box -->
+    <div class="input">
+        {{ form.course.label }}
+        {{ form.course}} 
+
+        {{ form.prof.label}}
+        {{ form.prof }}
+
+        {{ form.completed_credits.label}}
+        {{ form.completed_credits }}
+
+        {{ form.gpa.label}}
+        {{ form.gpa }}
+        <button name="submit_button" type="submit" value="select" class="btn btn-primary">Select</button>
+        <button name="submit_button" type="submit" value="reset" class="btn btn-danger">Reset</button>
+        <button name="submit_button" type="submit" value="calculate" class="btn btn-success">Calculate</button>
+    </div>
+</form>
+
+<script>
+    $(function() {
+        $.ajax({
+            url: '{{ url_for("autocomplete_course") }}'
+            }).done(function (data){
+                $('#course_autocomplete').autocomplete({
+                    source: data,
+                    minLength: 2
+                });
+            });
+        });
+</script>
+
+<script>
+    $(function() {
+        $.ajax({
+            url: '{{ url_for("autocomplete_prof") }}'
+            }).done(function (data){
+                $('#prof_autocomplete').autocomplete({
+                    source: data,
+                    minLength: 3
+                });
+            });
+        });
+</script>
+
+
+
+<!-- <ul id="selections">
+    {% if selections %}
+        {% for selection in selections %}
+            <li>{{ selection }}</li>
+        {% endfor %}
+    {% endif %}
+</ul> -->
+
+<div class="list-group">
+    {% if selections and profs%}
+        {% for i in range(selections|length) %}
+            <button type="button" class="list-group-item list-group-item-action">{{ selections[i] + " - " + profs[i]}}</button>
+        {% endfor %}
+    {% endif %}
+  </div>
+
+{% if predicted_gpa %}
+<h1>Your predicted GPA is {{ predicted_gpa }}!</h1>
+{% endif %}
+
+<script src="../static/script.js"></script>
+{% endblock content %}
