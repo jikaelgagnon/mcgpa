@@ -4,8 +4,9 @@ import json
 from wtforms import StringField, Form, SubmitField
 import pandas as pd
 from ai_app.model import predict_gpa
+import os
 
-df = pd.read_csv('results.csv')
+df = pd.read_csv(r'{}\ai_app\results.csv'.format(os.getcwd()))
 courses = df["course"].unique().tolist()
 profs = df["prof"].unique().tolist() # seems like there's a limit to length of list for autocomplete.
 # profs = ["banana","apple"]
