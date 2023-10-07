@@ -1,8 +1,9 @@
 import pandas as pd
+import os
 
-predictions = pd.read_csv("predictions.csv")
-profs = pd.read_csv("prof_scores.csv")
-results = pd.read_csv("results.csv")
+predictions = pd.read_csv(r"{}\ai_app\predictions.csv".format(os.getcwd()))
+profs = pd.read_csv(r"{}\ai_app\prof_scores.csv".format(os.getcwd()))
+results = pd.read_csv(r"{}\ai_app\results.csv".format(os.getcwd()))
 
 def get_prediction(course, prof=""):
     predicted_mark_raw = predictions[predictions["Course"]==course]["predicted_avg"].values[0]
