@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 
+# Load Ass
 predictions = pd.read_csv(r"{}\ai_app\predictions.csv".format(os.getcwd()))
 profs = pd.read_csv(r"{}\ai_app\prof_scores.csv".format(os.getcwd()))
 results = pd.read_csv(r"{}\ai_app\results.csv".format(os.getcwd()))
